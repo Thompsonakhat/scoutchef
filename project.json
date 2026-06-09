@@ -1,0 +1,204 @@
+{
+  "projectId": "20374a1f-092d-42b7-8c96-495a3efdeba5",
+  "commands": [
+    {
+      "command": "/help",
+      "description": "Get a list of available commands and their usage.",
+      "usage": "/help",
+      "examples": [
+        "User: /help → Bot: Commands: /start, /help, /reset"
+      ],
+      "notes": "Provides a list of commands."
+    },
+    {
+      "command": "/start",
+      "description": "Start the bot and receive a welcome message.",
+      "usage": "/start",
+      "examples": [
+        "User: /start → Bot: ✅ Bot is running. Type anything to chat."
+      ],
+      "notes": "General command to initiate interaction."
+    },
+    {
+      "command": "/watchlist",
+      "description": "View your current watchlist of tokens.",
+      "usage": "/watchlist",
+      "examples": [
+        "User: /watchlist → Bot: Here are your watched tokens."
+      ],
+      "notes": "Displays the user's watchlist."
+    },
+    {
+      "command": "/settings",
+      "description": "Adjust your notification and scoring preferences.",
+      "usage": "/settings",
+      "examples": [
+        "User: /settings → Bot: Adjust your preferences."
+      ],
+      "notes": "Allows users to set their preferences."
+    },
+    {
+      "command": "/alerts",
+      "description": "Manage your alert settings for high-scoring tokens.",
+      "usage": "/alerts",
+      "examples": [
+        "User: /alerts → Bot: Manage your alerts."
+      ],
+      "notes": "Users can set alerts for tokens."
+    },
+    {
+      "command": "/score",
+      "description": "Get the score of a specific token.",
+      "usage": "/score <tokenaddress>",
+      "examples": [
+        "User: /score 0x1234567890abcdef → Bot: The score for token is 85."
+      ],
+      "notes": "Provides scoring information for a token."
+    },
+    {
+      "command": "/risk",
+      "description": "Receive a risk summary for a specific token.",
+      "usage": "/risk <tokenaddress>",
+      "examples": [
+        "User: /risk 0x1234567890abcdef → Bot: Risk summary for token."
+      ],
+      "notes": "Generates a risk summary for the specified token."
+    }
+  ],
+  "aiMessages": [
+    {
+      "role": "user",
+      "content": "Create a Telegram bot named “ScoutChef”:\n\n- Monitor new token pairs and trending tokens every 1–5 minutes.\n- Score tokens 0–100 using clear criteria (liquidity, volume, holders, age, taxes, LP lock, etc.).\n- Send alerts for high-scoring tokens with essential details (contract, chain, LP, volume, links).\n- Include commands: /start, /help, /watchlist, /settings, /alerts, /score, /risk.\n- Store user preferences in MongoDB; fallback to in-memory if DB not set.\n- Generate short risk summaries via an external AI service."
+    },
+    {
+      "role": "assistant",
+      "content": "ScoutChef bot project has been successfully created with the specified architecture and commands.\n\nFiles touched (11): .env.sample, package.json, src/bot.js, src/commands/help.js, src/commands/loader.js, src/commands/start.js…\nValidation: ✅ project passes syntax/basic checks after this edit."
+    }
+  ],
+  "createdBy": "695397c85603fcac4c8ea626",
+  "source": "ai-cold-start",
+  "description": "",
+  "platform": "telegram",
+  "usesWebApp": false,
+  "telegramKind": "bot",
+  "planMarkdown": "Bot: ScoutChef\n\nSummary:\nScoutChef is a Telegram bot that monitors and scores new token pairs and trending tokens, providing users with timely alerts and insights.\n\nProduct goals:\nTo provide users with real-time monitoring and scoring of new and trending tokens, enabling informed investment decisions through alerts and detailed insights.\n\nHigh-level architecture:\nThe architecture consists of a single Node.js service utilizing grammY for Telegram bot interactions. It will periodically fetch token data, score tokens based on defined criteria, and send alerts to users. MongoDB will be used for persistent storage of user preferences, while in-memory storage will serve as a fallback. An external AI service will be integrated for generating risk summaries.\n\nData model:\nThe data model includes collections for user preferences (storing watchlists, alert settings, and scoring preferences) and token data (including attributes like liquidity, volume, holders, age, taxes, LP lock, etc.). Each token will have a unique identifier and relevant metadata for scoring and alerting.\n\nKey flows:\n1. User initiates interaction with /start command. 2. User sets preferences using /settings. 3. Bot fetches token data every 1-5 minutes. 4. Tokens are scored based on defined criteria. 5. High-scoring tokens trigger alerts sent to users. 6. Users can view their watchlist with /watchlist and check scores with /score. 7. Risk summaries are generated via an external AI service and sent to users as needed.\n\nTech stack:\nNode.js (ESM), grammY for Telegram bot framework, MongoDB for persistence, external AI service for risk summaries, and a generic object storage or filesystem for any necessary file/image storage.\n\nNon-functional requirements:\nThe bot should be scalable to handle multiple users and token data efficiently. It must ensure data consistency and reliability, with a fallback mechanism for user preferences. Performance should be optimized for quick response times, and security measures should be in place to protect user data and interactions.\n\nBot commands:\n• /start — Start the bot and receive a welcome message. (usage: /start) [General]\n• /help — Get a list of available commands and their usage. (usage: /help) [General]\n• /watchlist — View your current watchlist of tokens. (usage: /watchlist) [User Preferences]\n• /settings — Adjust your notification and scoring preferences. (usage: /settings) [User Preferences]\n• /alerts — Manage your alert settings for high-scoring tokens. (usage: /alerts) [User Preferences]\n• /score — Get the score of a specific token. (usage: /score <tokenaddress>) [Token Information]\n• /risk — Receive a risk summary for a specific token. (usage: /risk <tokenaddress>) [Token Information]\n",
+  "planSections": {
+    "productGoals": "To provide users with real-time monitoring and scoring of new and trending tokens, enabling informed investment decisions through alerts and detailed insights.",
+    "highLevelArchitecture": "The architecture consists of a single Node.js service utilizing grammY for Telegram bot interactions. It will periodically fetch token data, score tokens based on defined criteria, and send alerts to users. MongoDB will be used for persistent storage of user preferences, while in-memory storage will serve as a fallback. An external AI service will be integrated for generating risk summaries.",
+    "dataModel": "The data model includes collections for user preferences (storing watchlists, alert settings, and scoring preferences) and token data (including attributes like liquidity, volume, holders, age, taxes, LP lock, etc.). Each token will have a unique identifier and relevant metadata for scoring and alerting.",
+    "keyFlows": "1. User initiates interaction with /start command. 2. User sets preferences using /settings. 3. Bot fetches token data every 1-5 minutes. 4. Tokens are scored based on defined criteria. 5. High-scoring tokens trigger alerts sent to users. 6. Users can view their watchlist with /watchlist and check scores with /score. 7. Risk summaries are generated via an external AI service and sent to users as needed.",
+    "techStack": "Node.js (ESM), grammY for Telegram bot framework, MongoDB for persistence, external AI service for risk summaries, and a generic object storage or filesystem for any necessary file/image storage.",
+    "nonFunctional": "The bot should be scalable to handle multiple users and token data efficiently. It must ensure data consistency and reliability, with a fallback mechanism for user preferences. Performance should be optimized for quick response times, and security measures should be in place to protect user data and interactions."
+  },
+  "planCommands": [
+    {
+      "name": "/start",
+      "description": "Start the bot and receive a welcome message.",
+      "usage": "/start",
+      "category": "General"
+    },
+    {
+      "name": "/help",
+      "description": "Get a list of available commands and their usage.",
+      "usage": "/help",
+      "category": "General"
+    },
+    {
+      "name": "/watchlist",
+      "description": "View your current watchlist of tokens.",
+      "usage": "/watchlist",
+      "category": "User Preferences"
+    },
+    {
+      "name": "/settings",
+      "description": "Adjust your notification and scoring preferences.",
+      "usage": "/settings",
+      "category": "User Preferences"
+    },
+    {
+      "name": "/alerts",
+      "description": "Manage your alert settings for high-scoring tokens.",
+      "usage": "/alerts",
+      "category": "User Preferences"
+    },
+    {
+      "name": "/score",
+      "description": "Get the score of a specific token.",
+      "usage": "/score <tokenaddress>",
+      "category": "Token Information"
+    },
+    {
+      "name": "/risk",
+      "description": "Receive a risk summary for a specific token.",
+      "usage": "/risk <tokenaddress>",
+      "category": "Token Information"
+    }
+  ],
+  "envVarDocs": [],
+  "commandDocs": [
+    {
+      "command": "/start",
+      "description": "Start the bot and receive a welcome message.",
+      "usage": "/start",
+      "examples": [
+        "User: /start → Bot: ✅ Bot is running. Type anything to chat."
+      ],
+      "notes": "General command to initiate interaction."
+    },
+    {
+      "command": "/help",
+      "description": "Get a list of available commands and their usage.",
+      "usage": "/help",
+      "examples": [
+        "User: /help → Bot: Commands: /start, /help, /reset"
+      ],
+      "notes": "Provides a list of commands."
+    },
+    {
+      "command": "/watchlist",
+      "description": "View your current watchlist of tokens.",
+      "usage": "/watchlist",
+      "examples": [
+        "User: /watchlist → Bot: Here are your watched tokens."
+      ],
+      "notes": "Displays the user's watchlist."
+    },
+    {
+      "command": "/settings",
+      "description": "Adjust your notification and scoring preferences.",
+      "usage": "/settings",
+      "examples": [
+        "User: /settings → Bot: Adjust your preferences."
+      ],
+      "notes": "Allows users to set their preferences."
+    },
+    {
+      "command": "/alerts",
+      "description": "Manage your alert settings for high-scoring tokens.",
+      "usage": "/alerts",
+      "examples": [
+        "User: /alerts → Bot: Manage your alerts."
+      ],
+      "notes": "Users can set alerts for tokens."
+    },
+    {
+      "command": "/score",
+      "description": "Get the score of a specific token.",
+      "usage": "/score <tokenaddress>",
+      "examples": [
+        "User: /score 0x1234567890abcdef → Bot: The score for token is 85."
+      ],
+      "notes": "Provides scoring information for a token."
+    },
+    {
+      "command": "/risk",
+      "description": "Receive a risk summary for a specific token.",
+      "usage": "/risk <tokenaddress>",
+      "examples": [
+        "User: /risk 0x1234567890abcdef → Bot: Risk summary for token."
+      ],
+      "notes": "Generates a risk summary for the specified token."
+    }
+  ],
+  "title": "ScoutChef"
+}
